@@ -3,12 +3,14 @@ CREATE DATABASE IF NOT EXISTS praha_sushi DEFAULT CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS praha_sushi.categories(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
+  show_category boolean NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS praha_sushi.genres(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
+  show_genre boolean NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -21,7 +23,9 @@ CREATE TABLE IF NOT EXISTS praha_sushi.customers(
 
 CREATE TABLE IF NOT EXISTS praha_sushi.taxes(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  tax decimal(3,2) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  rate decimal(3,2) NOT NULL,
+  show_tax boolean NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -31,6 +35,7 @@ CREATE TABLE IF NOT EXISTS praha_sushi.menus(
   genre_id INT NOT NULL,
   name varchar(50) NOT NULL,
   price INT NOT NULL,
+  show_menu boolean NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   INDEX cate_ind (category_id),
   FOREIGN KEY (category_id) 
@@ -47,7 +52,6 @@ CREATE TABLE IF NOT EXISTS praha_sushi.orders(
   customer_id INT NOT NULL,
   tax_id INT NOT NULL,
   is_paid boolean NOT NULL,
-  is_eat_in boolean NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   INDEX cus_ind (customer_id),
   FOREIGN KEY (customer_id) 
@@ -63,6 +67,7 @@ CREATE TABLE IF NOT EXISTS praha_sushi.order_menus(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   order_id INT NOT NULL,
   menu_id INT NOT NULL,
+  count INT NOT NULL,
   is_wasabi boolean NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   INDEX ord_ind (order_id),
