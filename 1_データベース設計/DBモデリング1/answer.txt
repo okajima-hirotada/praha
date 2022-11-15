@@ -43,13 +43,12 @@ SELECT ord.id, FLOOR(sum(me.price * ord_me.count)*tax.rate) as "税込合計" FR
   inner join praha_sushi.menus me on me.id = ord_me.menu_id group by ord.id;
 
 合計皿数
-SELECT gen.name, sum(ord_me.count) as "皿数合計" FROM praha_sushi.orders ord 
+SELECT ord.id, sum(ord_me.count) as "皿数合計" FROM praha_sushi.orders ord 
   inner join praha_sushi.order_menus ord_me on ord.id = ord_me.order_id
   inner join praha_sushi.menus me on me.id = ord_me.menu_id 
   inner join praha_sushi.genres gen on me.genre_id = gen.id 
   inner join praha_sushi.categories cat on cat.id = me.category_id
-  where cat.id = 2 group by me.genre_id;
-
+  where cat.id = 2 group by ord.id;
 
 特定の期間内（今回は一ヶ月間）のお客さんの注文回数のランキング
 SELECT ord.customer_id, cus.name, count(*) FROM praha_sushi.orders ord 
