@@ -28,7 +28,11 @@ https://gyazo.com/580d4cc6a70f85d33f8c884757cccd66
 https://gyazo.com/dce84e05ffdfc6c69129635154882ba4
 
 トリオの条件含む
-
+追加条件
+1. 複数店舗があった場合
+2. 持ち帰れない商品と持ち変えられる商品を分けて表示したい場合
+3. 顧客がネットで注文できるようにする場合（注文日時と受け渡し日時、注文の変更やキャンセル、論理削除）
+https://gyazo.com/faf58f7a334ca2b0e1b35ade76810d62
 
 #課題4
 お客さんが会計をする際の最終的な支払金額（税抜き）
@@ -74,6 +78,7 @@ csvファイルデータのインポートの参考 https://taiga.hatenadiary.co
 SQL文（LOAD DATA LOCAL INFILE）の参考 https://agohack.com/import-csv-files-load-data-local-infile/
 シェルスクリプト実行時の権限エラーの参考 https://qiita.com/kiririri/items/81a828befc54e188d776
 
-mysqlを使用するときは DBモデリング1 を current directory にした状態で docker-compose up をする
+mysqlを使用するときは DBモデリング1 を current directory にした状態で docker-compose build --no-cache && docker-compose up をする
+※ サンプルデータを入れ直したいときはdataの中身を削除してから
 ※ docker start でも良いが、mysql と phpmyadmin が別コンテナなので、両方起動する必要がある
 phpmyadminのurlは localhost:8080
