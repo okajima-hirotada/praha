@@ -304,8 +304,8 @@ UTCを使用することで発生する問題
 このため、UTCを使用する場合は、ユーザーがどの時刻を使用しているかを考慮する必要があります。  
 
 ### 参考
-https://dev.mysql.com/doc/refman/5.6/ja/timestamp-initialization.html
-https://dev.mysql.com/doc/refman/5.6/ja/datetime.html
+https://dev.mysql.com/doc/refman/5.6/ja/timestamp-initialization.html  
+https://dev.mysql.com/doc/refman/5.6/ja/datetime.html  
 
 # 開発フローの参考
 松原さん  
